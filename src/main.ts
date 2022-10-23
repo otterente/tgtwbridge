@@ -13,7 +13,7 @@ const eventPrint = async(event: NewMessageEvent) => {
 
     if(initator.id.toJSNumber() == tgc._selfInputPeer?.userId.toJSNumber()) {
         if(event.message.message.match(/.tweet/i)) {
-            if(message.file?.mimeType == "video/webm") return message.reply({message: "noch kein WebM support :/"}).then(res => {
+            if(message.file?.mimeType == "video/webm") return message.reply({ message: "~WebM~" }).then(res => {
                 return setTimeout(() => {
                     event.message.delete({revoke: true})
                     res?.delete({revoke: true})
@@ -26,12 +26,12 @@ const eventPrint = async(event: NewMessageEvent) => {
                 tweetId: tweetData.id,
                 tweetId_str: tweetData.id_str
             })
-            return message.reply({message: `Gezwischert auf: https://twitter.com/${tweetData.user.name}/status/${tweetData.id_str}`});
+            return message.reply({ message: `Gezwischert \auf: https://twitter.com/${tweetData.user.name}/status/${tweetData.id_str}` });
         }
 
         if(event.message.message.match(/.remove/i)) {
             const id = (event.message.isReply) ? message.id : Number(message.message.split(" ")[1]);
-            if(isNaN(id)) return message.reply({message: "NaN du Opfer"}).then(res => {
+            if(isNaN(id)) return message.reply({ message: "*NaN*" }).then(res => {
                 return setTimeout(() => {
                     event.message.delete({revoke: true})
                     res?.delete({revoke: true})
